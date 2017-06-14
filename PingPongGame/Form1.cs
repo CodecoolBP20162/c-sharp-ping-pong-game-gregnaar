@@ -12,8 +12,8 @@ namespace PingPongGame
         }
 
         bool gameOn = false;
-        int speedX = -10;
-        int speedY = -10;
+        int speedX = -14;
+        int speedY = -6;
         int player1Speed = 10;
         int player2Speed = 10;
         bool player1Up, player2Up, player1Down, player2Down = false;
@@ -25,6 +25,7 @@ namespace PingPongGame
                 gameOn = false;
                 pressStartToPlay.Text = (player1Score.Text == "xxxxx") ? "Winner: Player1" : "Winner: Player2";
                 pressStartToPlay.Visible = true;
+                ball.Visible = false;
             }
                 
             if (gameOn)
@@ -73,6 +74,7 @@ namespace PingPongGame
                     gameOn = true;
                     pressStartToPlay.Visible = false;
                     Pirate.Visible = false;
+                    ball.Visible = true;
                     break;
                 case Keys.Escape:
                     gameOn = false;
@@ -109,6 +111,7 @@ namespace PingPongGame
                 speedX *= -1;
                 speedY *= 1;
                 player1Score.Text += "x";
+                ball.Location = new Point(650, 227);
             }
                 
             if (Collision_Left(ball))
@@ -116,6 +119,7 @@ namespace PingPongGame
                 speedX *= -1;
                 speedY *= 1;
                 player2Score.Text += "x";
+                ball.Location = new Point(150, 227);
             }
                 
             if (Collision_Top(ball))

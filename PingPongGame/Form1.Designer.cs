@@ -123,6 +123,7 @@
             this.ball.Size = new System.Drawing.Size(15, 15);
             this.ball.TabIndex = 0;
             this.ball.TabStop = false;
+            this.ball.Visible = false;
             // 
             // player1
             // 
