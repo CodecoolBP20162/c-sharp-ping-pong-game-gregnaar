@@ -140,14 +140,14 @@ namespace PingPongGame
                 speedX *= -1;
                 speedY *= 1;
                 player2Score.Text += "x";
-                ball.Location = new Point(player1.Top -40, 227);
+                ball.Location = new Point(player1.Top -40, player1.Top);
             }
             if (Collision_Player2(ball))
             {
                 speedX *= -1;
                 speedY *= 1;
                 player1Score.Text += "x";
-                ball.Location = new Point(player2.Top - 40, 227);
+                ball.Location = new Point(player2.Top -40, player2.Top);
             }
 
             int ballx = ball.Location.X;
