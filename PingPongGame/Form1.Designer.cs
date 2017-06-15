@@ -99,8 +99,9 @@
             // pressStartToPlay
             // 
             this.pressStartToPlay.AutoSize = true;
+            this.pressStartToPlay.BackColor = System.Drawing.Color.Transparent;
             this.pressStartToPlay.Font = new System.Drawing.Font("Palatino Linotype", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.pressStartToPlay.Location = new System.Drawing.Point(276, 191);
+            this.pressStartToPlay.Location = new System.Drawing.Point(264, 265);
             this.pressStartToPlay.Name = "pressStartToPlay";
             this.pressStartToPlay.Size = new System.Drawing.Size(258, 32);
             this.pressStartToPlay.TabIndex = 7;
@@ -109,7 +110,7 @@
             // Pirate
             // 
             this.Pirate.Image = global::PingPongGame.Properties.Resources.HAR;
-            this.Pirate.Location = new System.Drawing.Point(313, 54);
+            this.Pirate.Location = new System.Drawing.Point(312, 108);
             this.Pirate.Name = "Pirate";
             this.Pirate.Size = new System.Drawing.Size(153, 134);
             this.Pirate.TabIndex = 8;

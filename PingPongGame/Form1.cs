@@ -20,14 +20,8 @@ namespace PingPongGame
 
         private void movementTimer_Tick(object sender, EventArgs e)
         {
-            if (player1Score.Text == "xxxxx" || player2Score.Text == "xxxxx")
-            {
-                gameOn = false;
-                pressStartToPlay.Text = (player1Score.Text == "xxxxx") ? "Winner: Player1" : "Winner: Player2";
-                pressStartToPlay.Visible = true;
-                ball.Visible = false;
-            }
-                
+            stillRunning();
+
             if (gameOn)
             {
                 moveBall();
@@ -47,6 +41,16 @@ namespace PingPongGame
                 {
                     player1.Top += player2Speed;
                 }
+            }
+        }
+        private void stillRunning()
+        {
+            if (player1Score.Text == "xxxxx" || player2Score.Text == "xxxxx")
+            {
+                gameOn = false;
+                pressStartToPlay.Text = (player1Score.Text == "xxxxx") ? "Winner: Player1" : "Winner: Player2";
+                pressStartToPlay.Visible = true;
+                ball.Visible = false;
             }
         }
 
@@ -105,7 +109,7 @@ namespace PingPongGame
 
         public void moveBall()
         {
-            
+
             if (Collision_Right(ball))
             {
                 speedX *= -1;
@@ -113,7 +117,7 @@ namespace PingPongGame
                 player1Score.Text += "x";
                 ball.Location = new Point(650, 227);
             }
-                
+
             if (Collision_Left(ball))
             {
                 speedX *= -1;
@@ -121,13 +125,13 @@ namespace PingPongGame
                 player2Score.Text += "x";
                 ball.Location = new Point(150, 227);
             }
-                
+
             if (Collision_Top(ball))
             {
                 speedX *= 1;
                 speedY *= -1;
             }
-                
+
             if (Collision_Bottom(ball))
             {
                 speedX *= 1;
@@ -147,8 +151,6 @@ namespace PingPongGame
             int ballx = ball.Location.X;
             int bally = ball.Location.Y;
             ball.Location = new Point(ballx + speedX, bally + speedY);
-
-            
 
         }
 
@@ -178,16 +180,16 @@ namespace PingPongGame
             return false;
         }
 
-
-
         public bool Collision_Player1(PictureBox ball)
         {
             if (player1.Bounds.IntersectsWith(ball.Bounds))
             {
+                Collision_Right(ball);
                 return true;
             }
             return false;
         }
+
         public bool Collision_Player2(PictureBox ball)
         {
             if (player2.Bounds.IntersectsWith(ball.Bounds))
