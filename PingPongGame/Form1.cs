@@ -18,6 +18,7 @@ namespace PingPongGame
         int player2Speed = 10;
         bool player1Up, player2Up, player1Down, player2Down = false;
 
+        //while gameOn is true the ball keeps going with every tick, and the players can move the ships
         private void movementTimer_Tick(object sender, EventArgs e)
         {
             stillRunning();
@@ -43,6 +44,7 @@ namespace PingPongGame
                 }
             }
         }
+        //stops the game if a player reaches 5 points
         private void stillRunning()
         {
             if (player1Score.Text == "xxxxx" || player2Score.Text == "xxxxx")
@@ -53,7 +55,7 @@ namespace PingPongGame
                 ball.Visible = false;
             }
         }
-
+        //eventlistener for player controll input(key pressed)
         private void Player_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -87,7 +89,7 @@ namespace PingPongGame
                     break;
             }
         }
-
+        //eventlistener for player controll input(key press ended)
         private void Player_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -106,15 +108,24 @@ namespace PingPongGame
                     break;
             }
         }
-
+        //ball movement, checks for collisions
         public void moveBall()
         {
+            ballCollisions();
 
+            int ballx = ball.Location.X;
+            int bally = ball.Location.Y;
+            ball.Location = new Point(ballx + speedX, bally + speedY);
+
+        }
+        //checks if the ball hits the wall or a player ship
+        public void ballCollisions()
+        {
             if (Collision_Right(ball))
             {
                 speedX *= -1;
                 speedY *= 1;
-                player1Score.Text += "x";
+                player1_addScore();
                 ball.Location = new Point(650, 227);
             }
 
@@ -122,7 +133,7 @@ namespace PingPongGame
             {
                 speedX *= -1;
                 speedY *= 1;
-                player2Score.Text += "x";
+                player2_addScore();
                 ball.Location = new Point(150, 227);
             }
 
@@ -147,13 +158,8 @@ namespace PingPongGame
                 speedX *= -1;
                 speedY *= 1;
             }
-
-            int ballx = ball.Location.X;
-            int bally = ball.Location.Y;
-            ball.Location = new Point(ballx + speedX, bally + speedY);
-
         }
-
+        //collision checking methods for every direction
         public Boolean Collision_Left(PictureBox obj)
         {
             if (obj.Location.X <= 0)
@@ -179,7 +185,7 @@ namespace PingPongGame
                 return true;
             return false;
         }
-
+        //checks collision for the player1 ship
         public bool Collision_Player1(PictureBox ball)
         {
             if (player1.Bounds.IntersectsWith(ball.Bounds))
@@ -189,7 +195,7 @@ namespace PingPongGame
             }
             return false;
         }
-
+        //checks collision for the player1 ship
         public bool Collision_Player2(PictureBox ball)
         {
             if (player2.Bounds.IntersectsWith(ball.Bounds))
@@ -198,6 +204,15 @@ namespace PingPongGame
                 return true;
             }
             return false;
+        }
+
+        public void player1_addScore()
+        {
+            player1Score.Text += "x";
+        }
+        public void player2_addScore()
+        {
+            player2Score.Text += "x";
         }
     }
 }
