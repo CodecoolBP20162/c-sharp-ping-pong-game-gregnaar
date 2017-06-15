@@ -130,7 +130,7 @@
             // 
             this.player1.BackColor = System.Drawing.Color.Transparent;
             this.player1.Image = global::PingPongGame.Properties.Resources.pirateShip2;
-            this.player1.Location = new System.Drawing.Point(-24, 158);
+            this.player1.Location = new System.Drawing.Point(1, 158);
             this.player1.Name = "player1";
             this.player1.Size = new System.Drawing.Size(65, 105);
             this.player1.TabIndex = 2;
@@ -140,7 +140,7 @@
             // 
             this.player2.BackColor = System.Drawing.Color.Black;
             this.player2.Image = global::PingPongGame.Properties.Resources.pirateShip;
-            this.player2.Location = new System.Drawing.Point(706, 158);
+            this.player2.Location = new System.Drawing.Point(692, 158);
             this.player2.Name = "player2";
             this.player2.Size = new System.Drawing.Size(65, 105);
             this.player2.TabIndex = 1;

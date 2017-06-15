@@ -126,7 +126,7 @@ namespace PingPongGame
                 speedX *= -1;
                 speedY *= 1;
                 player1_addScore();
-                ball.Location = new Point(650, 227);
+                ball.Location = new Point(650, player2.Top);
             }
 
             if (Collision_Left(ball))
@@ -134,7 +134,7 @@ namespace PingPongGame
                 speedX *= -1;
                 speedY *= 1;
                 player2_addScore();
-                ball.Location = new Point(150, 227);
+                ball.Location = new Point(150, player1.Top);
             }
 
             if (Collision_Top(ball))
