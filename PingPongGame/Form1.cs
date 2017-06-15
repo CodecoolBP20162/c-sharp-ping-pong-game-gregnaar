@@ -20,14 +20,7 @@ namespace PingPongGame
 
         private void movementTimer_Tick(object sender, EventArgs e)
         {
-            if (player1Score.Text == "xxxxx" || player2Score.Text == "xxxxx")
-            {
-                gameOn = false;
-                pressStartToPlay.Text = (player1Score.Text == "xxxxx") ? "Winner: Player1" : "Winner: Player2";
-                pressStartToPlay.Visible = true;
-                ball.Visible = false;
-            }
-                
+            stillRunning();
             if (gameOn)
             {
                 moveBall();
@@ -47,6 +40,17 @@ namespace PingPongGame
                 {
                     player1.Top += player2Speed;
                 }
+            }
+        }
+
+        private void stillRunning()
+        {
+            if (player1Score.Text == "xxxxx" || player2Score.Text == "xxxxx")
+            {
+                gameOn = false;
+                pressStartToPlay.Text = (player1Score.Text == "xxxxx") ? "Winner: Player1" : "Winner: Player2";
+                pressStartToPlay.Visible = true;
+                ball.Visible = false;
             }
         }
 
@@ -149,9 +153,6 @@ namespace PingPongGame
             int ballx = ball.Location.X;
             int bally = ball.Location.Y;
             ball.Location = new Point(ballx + speedX, bally + speedY);
-
-            
-
         }
 
         public Boolean Collision_Left(PictureBox obj)
@@ -167,20 +168,20 @@ namespace PingPongGame
                 return true;
             return false;
         }
+
         public Boolean Collision_Top(PictureBox obj)
         {
             if (obj.Location.Y <= 0)
                 return true;
             return false;
         }
+
         public Boolean Collision_Bottom(PictureBox obj)
         {
             if (obj.Location.Y + obj.Height >= 410)
                 return true;
             return false;
         }
-
-
 
         public bool Collision_Player1(PictureBox ball)
         {
