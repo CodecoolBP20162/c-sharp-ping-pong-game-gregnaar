@@ -187,6 +187,7 @@ namespace PingPongGame
         {
             if (player1.Bounds.IntersectsWith(ball.Bounds))
             {
+                Collision_Right(ball);
                 return true;
             }
             return false;
