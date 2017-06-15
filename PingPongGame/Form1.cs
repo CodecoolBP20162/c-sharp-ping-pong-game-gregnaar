@@ -12,10 +12,10 @@ namespace PingPongGame
         }
 
         bool gameOn = false;
-        int speedX = -14;
+        int speedX = -30;
         int speedY = -6;
-        int player1Speed = 10;
-        int player2Speed = 10;
+        int player1Speed = 5;
+        int player2Speed = 5;
         bool player1Up, player2Up, player1Down, player2Down = false;
 
         private void movementTimer_Tick(object sender, EventArgs e)
@@ -110,16 +110,14 @@ namespace PingPongGame
             {
                 speedX *= -1;
                 speedY *= 1;
-                player1Score.Text += "x";
-                ball.Location = new Point(650, 227);
+                
             }
                 
             if (Collision_Left(ball))
             {
                 speedX *= -1;
                 speedY *= 1;
-                player2Score.Text += "x";
-                ball.Location = new Point(150, 227);
+                
             }
                 
             if (Collision_Top(ball))
@@ -137,11 +135,15 @@ namespace PingPongGame
             {
                 speedX *= -1;
                 speedY *= 1;
+                player2Score.Text += "x";
+                ball.Location = new Point(player1.Top -40, 227);
             }
             if (Collision_Player2(ball))
             {
                 speedX *= -1;
                 speedY *= 1;
+                player1Score.Text += "x";
+                ball.Location = new Point(player2.Top - 40, 227);
             }
 
             int ballx = ball.Location.X;
